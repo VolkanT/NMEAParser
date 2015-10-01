@@ -1,0 +1,13 @@
+NMEA Parser
+* From input stream parse for GPRMC messages.
+* Extract UTC, LAT, LON from GPRMC messages.
+* Create and dump to file extracted information in a decimal format
+
+NMEA Parser tester
+* create test data, 300 lines containing GPRMC, GPGGA, and GPGLL
+* output stream each character of test data
+
+Valid Test
+1) pipe tester into parser. If parser generates a file with 100 lines of UTC, LAT, LON, and first/last 2 data points compare accuratly with test data, then test passed.   
+
+
