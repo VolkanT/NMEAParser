@@ -12,6 +12,8 @@ int main(void)
 	pOutput = fopen("output","w");
 	fclose(pOutput);
 
+	printf("stream content, type \'q\' to exit ");
+	
 	//From input stream parse for GPRMC messages.
 	char input[nmeaMessageSize];
 	char * pfind; 
@@ -43,7 +45,7 @@ int main(void)
 			pfind = strchr(pfind+1,','); //ignoring navigation receiver warning
 			pfind = strchr(pfind+1,',');
 			{			
-				char * temp;
+				char temp[3];
 				strncpy(temp,pfind+1,2);
  				lat = atof(temp);
 				strncpy(temp,pfind+3,2);
@@ -57,7 +59,7 @@ int main(void)
 			// Extract and convert longitude
 			pfind = strchr(pfind+1,',');
 			{						
-				char * temp;
+				char temp[3];
 				strncpy(temp,pfind+1,2);
  				lon = atof(temp);
 				strncpy(temp,pfind+3,2);
@@ -77,7 +79,7 @@ int main(void)
 			}
 			fprintf(pOutput,"%s, %f, %f \n", UTC, lat, lon);
 			fclose(pOutput);
-		}else if(input[0] == -1)
+		}else if((input[0] == 'q'))
 		{
 			break;
 		}

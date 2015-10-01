@@ -1,5 +1,7 @@
 all:
+	rm output
 	gcc parsermain.c -o NMEAParse
 
 test:
-	head -301 | ./NMEAParse
+	rm output
+	head -300 testdata | ./NMEAParse
